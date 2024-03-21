@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,48 +16,27 @@ public class RegisterPageTests extends TestBase {
     private MyAccountPage myAccountPage;
 
 
-    @Test(description = "Test Registration with Valid data and Invalid data",priority = 1)
+    @Test(description = "Test Registration with Valid data and Invalid data")
     public void Registration() {
         homePage = new HomePage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        registerPage=homePage.ClickOnCreateAccount();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        homePage.waitElementToBeVisible(homePage.CreateAccountLocator);
+        registerPage = homePage.ClickOnCreateAccount();
         registerPage.EnterFirstName("Ahmed");
         registerPage.EnterLastName("Samir");
-        registerPage.EnterEmailAddress("me33333@me");
+        registerPage.EnterEmailAddress("me3z4pz4437p33@me.com");
         registerPage.EnterPassword("123456Ahmed###");
         registerPage.EnterPasswordConfirmation("123456Ahmed###");
-        myAccountPage=registerPage.ClickOnSubmit();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        myAccountPage = registerPage.ClickOnSubmit();
+
+
         String actual = myAccountPage.chkRegisterationSuccess();
         String expected = "Thank you for registering with Main Website Store.";
-        Assert.assertTrue(actual.contains(expected));
+        Assert.assertTrue(actual.contains(expected), "Actual: " + actual + " is not equal to Expected: " + expected);
+
         myAccountPage.logOut();
     }
-        @Test(description = "Test Registration with Valid data and Invalid data",priority = 2)
 
-        public void InvalidRegistration() {
-            homePage = new HomePage(driver);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-            registerPage = homePage.ClickOnCreateAccount();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-            registerPage.EnterFirstName("Ahmed");
-            registerPage.EnterLastName("Samir");
-            registerPage.EnterEmailAddress("me33333@me");
-            registerPage.EnterPassword("123456Ahmed###");
-            registerPage.EnterPasswordConfirmation("123456Ahmed###");
-            myAccountPage = registerPage.ClickOnSubmit();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            String actual = myAccountPage.chkRegisterationSuccess();
-            String expected = "Thank you for registering with Main Website Store.";
-            Assert.assertTrue(actual.contains(expected));
-            myAccountPage.logOut();
-
-        }
 
 
 
