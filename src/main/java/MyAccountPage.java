@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.time.Duration;
 
@@ -22,12 +23,12 @@ public class MyAccountPage extends PageBase {
 
         return SuccessfullRegistrationMsg.getText();
     }
-    public RegisterPage logOut() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    public void logOut() {
 
         ClickOnElement(DropDownButtonElement);
         ClickOnElement(signOutElement);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        return new RegisterPage(driver);
+
+
     }
 }
