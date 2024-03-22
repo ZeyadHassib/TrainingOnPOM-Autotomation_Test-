@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage extends PageBase {
+public class HomePage extends Base {
 
     public HomePage(WebDriver driver) {
 
@@ -31,8 +31,8 @@ public class HomePage extends PageBase {
         return new LoginPage(driver);
     }
     public void waitElementToBeVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
 
 

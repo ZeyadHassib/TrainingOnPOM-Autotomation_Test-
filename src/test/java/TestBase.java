@@ -7,12 +7,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
 public class TestBase {
 
     protected WebDriver driver;
+    protected SoftAssert softAssert;
 
 
 
@@ -21,9 +23,9 @@ public class TestBase {
     public void setup() {
 
         driver = new EdgeDriver();
+        softAssert = new SoftAssert();
         driver.manage().window().maximize();
         driver.get("https://magento.softwaretestingboard.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
     }
@@ -34,7 +36,7 @@ public class TestBase {
     @AfterTest
     public void quite() {
 
-        driver.quit();
+     driver.quit();
 
     }
 }
