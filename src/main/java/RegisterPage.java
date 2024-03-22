@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.time.Duration;
+
 public class RegisterPage extends PageBase {
 
 
@@ -26,26 +28,14 @@ public class RegisterPage extends PageBase {
 
 
 
-    public void EnterFirstName(String text) {
-        enterData(FirstNameElement,text);
+    public void SetAccountData(String fname, String lname, String email, String pass, String Confirmpass) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        enterData(FirstNameElement,fname);
+        enterData(LastNameElement,lname);
+        enterData(EmailAddressElement,email);
+        enterData(PasswordElement,pass);
+        enterData(PasswordConfirmationElement,Confirmpass);
     }
-
-    public void EnterLastName(String text) {
-        enterData(LastNameElement,text);
-    }
-
-    public void EnterEmailAddress(String text) {
-        enterData(EmailAddressElement,text);
-    }
-
-    public void EnterPassword(String text) {
-        enterData(PasswordElement,text);
-    }
-
-    public void EnterPasswordConfirmation(String text) {
-        enterData(PasswordConfirmationElement,text);
-    }
-
     public MyAccountPage ClickOnSubmit() {
 
         ClickOnElement(SubmitButton);

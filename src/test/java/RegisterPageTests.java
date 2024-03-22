@@ -16,16 +16,13 @@ public class RegisterPageTests extends TestBase {
     private MyAccountPage myAccountPage;
 
 
-    @Test(description = "Test Registration with Valid data and Invalid data")
-    public void Registration() {
+    @Test(testName = "TC_VerifySuccessfullRegistration", description = "Test Registration with Valid data")
+    public void TC_VerifySuccessfullRegistration() {
         homePage = new HomePage(driver);
         homePage.waitElementToBeVisible(homePage.CreateAccountLocator);
         registerPage = homePage.ClickOnCreateAccount();
-        registerPage.EnterFirstName("Ahmed");
-        registerPage.EnterLastName("Samir");
-        registerPage.EnterEmailAddress("me3z4pz4437p33@me.com");
-        registerPage.EnterPassword("123456Ahmed###");
-        registerPage.EnterPasswordConfirmation("123456Ahmed###");
+        registerPage.SetAccountData("Ahmed", "Mahmoud", "Email7@Vaild.com", "123456Ahmed#", "123456Ahmed#");
+
         myAccountPage = registerPage.ClickOnSubmit();
 
 
